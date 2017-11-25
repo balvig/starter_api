@@ -45,8 +45,8 @@ module StarterApi
 
       def garbage_message
         {
-          title: Date.today.strftime("%a %-m/%-d"),
-          body: Garbage.new.today.to_s.capitalize
+          title: "Tomorrow's garbage:",
+          body: Garbage.new(Date.today + 1).run
         }
       end
   end

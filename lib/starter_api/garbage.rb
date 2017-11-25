@@ -2,7 +2,8 @@ require "ice_cube"
 
 module StarterApi
   class Garbage
-    def initialize
+    def initialize(date)
+      @date = date
       @rules = {
         "Recyclable" => recyclable,
         "Burnable" => combustible,
@@ -11,17 +12,17 @@ module StarterApi
       }
     end
 
-    def today
-      find_todays_garbage || "No garbage today :)"
+    def run
+      find_garbage || "None :)"
     end
 
     private
 
-      attr_reader :rules
+      attr_reader :rules, :date
 
-      def find_todays_garbage
+      def find_garbage
         rules.find do |name, rule|
-          rule.occurs_on?(Date.today)
+          rule.occurs_on?(date)
         end&.first
       end
 
