@@ -53,7 +53,7 @@ module StarterApi
       end
 
       def garbage
-        @_garbage ||= Garbage.new(Date.today + 2).run
+        @_garbage ||= Garbage.new(Date.today + 1).run
       end
   end
 end
