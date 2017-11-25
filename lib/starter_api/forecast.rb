@@ -5,7 +5,7 @@ module StarterApi
     API_KEY = "70b6071c40144a5c35c2a2d0d0c6beed"
 
     def rain_probability
-      data.fetch("rain", {})["3h"] || 0
+      rain_data || 0
     end
 
     def description
@@ -13,6 +13,10 @@ module StarterApi
     end
 
     private
+
+      def rain_data
+        data.fetch("rain", {})["3h"]
+      end
 
       def data
         @_data ||= fetch["list"].first
