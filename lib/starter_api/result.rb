@@ -45,7 +45,7 @@ module StarterApi
 
       def garbage_message
         {
-          title: "Tomorrow's garbage:",
+          title: "Garbage tmrw:",
           body: Garbage.new(Date.today + 1).run
         }
       end
