@@ -32,12 +32,14 @@ module StarterApi
       end
 
       def messages
-        [
-          {
-            title: forecast.description.capitalize,
-            body: "Rain: #{forecast.rain_probability * 100}%"
-          }
-        ]
+        [weather_message]
+      end
+
+      def weather_message
+        {
+          title: forecast.description.capitalize,
+          body: "Rain: #{forecast.rain_probability * 100}%"
+        }
       end
   end
 end
