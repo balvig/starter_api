@@ -6,7 +6,7 @@ module StarterApi
       @rules = {
         "Recyclable" => recyclable,
         "Burnable" => combustible,
-        "Non combustible" => non_combustible,
+        "Non-combustible" => non_combustible,
         "PET bottles" => pet_bottles,
       }
     end
