@@ -2,7 +2,7 @@ require "open-weather-api"
 
 module StarterApi
   class Forecast
-    API_KEY = "c205f9ab7b647c699da6c29010cf8829"
+    API_KEY = "70b6071c40144a5c35c2a2d0d0c6beed"
 
     def rain_probability
       data.fetch("rain", {})["3h"] || 0
