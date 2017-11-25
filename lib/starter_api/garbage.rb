@@ -12,7 +12,7 @@ module StarterApi
     end
 
     def today
-      find_todays_garbage
+      find_todays_garbage || :none
     end
 
     private
@@ -22,7 +22,7 @@ module StarterApi
       def find_todays_garbage
         rules.find do |name, rule|
           rule.occurs_on?(Date.today)
-        end
+        end&.first
       end
 
       def recyclable
