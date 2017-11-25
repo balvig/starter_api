@@ -1,4 +1,5 @@
 require "starter_api/forecast"
+require "starter_api/garbage"
 
 module StarterApi
   class Result
