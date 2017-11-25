@@ -13,7 +13,7 @@ module StarterApi
     end
 
     def run
-      find_garbage || "None :)"
+      find_garbage
     end
 
     private

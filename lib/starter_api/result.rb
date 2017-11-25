@@ -28,12 +28,8 @@ module StarterApi
         forecast.rain_probability
       end
 
-      def forecast
-        @_forecast ||= Forecast.new
-      end
-
       def messages
-        [weather_message, garbage_message]
+        [weather_message, garbage_message].compact
       end
 
       def weather_message
@@ -44,10 +40,20 @@ module StarterApi
       end
 
       def garbage_message
+        return unless garbage
+
         {
-          title: "Garbage tmrw:",
-          body: Garbage.new(Date.today + 1).run
+          title: "Tomorrow:",
+          body: garbage
         }
+      end
+
+      def forecast
+        @_forecast ||= Forecast.new
+      end
+
+      def garbage
+        @_garbage ||= Garbage.new(Date.today + 2).run
       end
   end
 end
