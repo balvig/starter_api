@@ -4,15 +4,15 @@ module StarterApi
   class Garbage
     def initialize
       @rules = {
-        recyclable: recyclable,
-        combustible: combustible,
-        non_combustible: non_combustible,
-        pet_bottles: pet_bottles,
+        "Recyclable" => recyclable,
+        "Burnable" => combustible,
+        "Non combustible" => non_combustible,
+        "PET bottles" => pet_bottles,
       }
     end
 
     def today
-      find_todays_garbage || :none
+      find_todays_garbage || "No garbage today :)"
     end
 
     private

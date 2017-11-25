@@ -33,13 +33,20 @@ module StarterApi
       end
 
       def messages
-        [weather_message]
+        [weather_message, garbage_message]
       end
 
       def weather_message
         {
           title: forecast.description.capitalize,
           body: "Rain: #{forecast.rain_probability * 100}%"
+        }
+      end
+
+      def garbage_message
+        {
+          title: Date.today.strftime("%a %-m/%-d"),
+          body: Garbage.new.today.to_s.capitalize
         }
       end
   end
