@@ -14,13 +14,13 @@ module StarterApi
 
       def status
         if value.nil?
-          nil
+          :white
         elsif value >= 0.7
           :red
         elsif value >= 0.4
-          :yellow
+          :blue
         else
-          :green
+          :white
         end
       end
 
