@@ -1,0 +1,13 @@
+me": "Starter API",
+  "description": "Data API for Raspbery Pi project (https://github.com/balvig/starter)",
+  "repository": "https://github.com/balvig/starter_api",
+  "env": {
+    "TZ": {
+      "description": "Time zone for getting correct dates"
+    },
+    "OPEN_WEATHER_API_KEY": {
+      "description": "API key for getting weather data"
+    }
+  }
+}
+
