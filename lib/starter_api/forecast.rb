@@ -9,10 +9,18 @@ module StarterApi
     end
 
     def description
-      data["weather"].first["description"]
+      "#{summary}, #{temperature}°C"
     end
 
     private
+
+      def summary
+        data["weather"].first["description"]
+      end
+
+      def temperature
+        data["main"]["temp"].round
+      end
 
       def rain_data
         data.fetch("rain", {})["3h"]
@@ -23,7 +31,7 @@ module StarterApi
       end
 
       def fetch
-        api.forecast :hourly, city: "Tokyo", country_code: "jp"
+        api.raw "forecast", q: "Tokyo,jp", units: "metric"
       end
 
       def api

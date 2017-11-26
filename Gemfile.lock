@@ -1,11 +1,13 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    coderay (1.1.2)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     ice_cube (0.16.2)
+    method_source (0.9.0)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
@@ -14,6 +16,9 @@ GEM
     netrc (0.11.0)
     open-weather-api (0.0.7)
       rest-client (~> 2.0)
+    pry (0.11.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
@@ -38,6 +43,7 @@ DEPENDENCIES
   ice_cube
   minitest
   open-weather-api
+  pry
   sinatra
 
 RUBY VERSION
