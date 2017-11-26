@@ -8,19 +8,15 @@ module StarterApi
       rain_data || 0
     end
 
-    def description
-      "#{summary}, #{temperature}C"
+    def summary
+      data["weather"].first["description"]
+    end
+
+    def temperature
+      data["main"]["temp"].round
     end
 
     private
-
-      def summary
-        data["weather"].first["description"].capitalize
-      end
-
-      def temperature
-        data["main"]["temp"].round
-      end
 
       def rain_data
         data.fetch("rain", {})["3h"]
