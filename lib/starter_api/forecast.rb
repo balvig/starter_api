@@ -2,7 +2,7 @@ require "open-weather-api"
 
 module StarterApi
   class Forecast
-    API_KEY = "70b6071c40144a5c35c2a2d0d0c6beed"
+    API_KEY = ENV["OPEN_WEATHER_API_KEY"]
 
     def rain_probability
       rain_data || 0
