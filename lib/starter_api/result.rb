@@ -34,7 +34,7 @@ module StarterApi
 
       def weather_message
         {
-          title: forecast.description.capitalize,
+          title: forecast.description,
           body: "Rain: #{forecast.rain_probability * 100}%"
         }
       end

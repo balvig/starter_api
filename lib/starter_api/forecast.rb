@@ -15,7 +15,7 @@ module StarterApi
     private
 
       def summary
-        data["weather"].first["description"]
+        data["weather"].first["description"].capitalize
       end
 
       def temperature
