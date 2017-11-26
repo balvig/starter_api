@@ -9,7 +9,7 @@ module StarterApi
     end
 
     def description
-      "#{summary}, #{temperature}°C"
+      "#{summary}, #{temperature}C"
     end
 
     private
