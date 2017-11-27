@@ -5,7 +5,7 @@ module StarterApi
     API_KEY = ENV["OPEN_WEATHER_API_KEY"]
 
     def rain_probability
-      rain_data || 0
+      (rain_data * 100).round
     end
 
     def summary
@@ -19,7 +19,7 @@ module StarterApi
     private
 
       def rain_data
-        data.fetch("rain", {})["3h"]
+        data.fetch("rain", {})["3h"] || 0
       end
 
       def data

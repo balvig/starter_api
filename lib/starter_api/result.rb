@@ -13,18 +13,16 @@ module StarterApi
     private
 
       def status
-        if value.nil?
-          :white
-        elsif value >= 0.7
+        if rain_probability >= 70
           :red
-        elsif value >= 0.4
+        elsif rain_probability >= 40
           :blue
         else
           :white
         end
       end
 
-      def value
+      def rain_probability
         forecast.rain_probability
       end
 
@@ -35,7 +33,7 @@ module StarterApi
       def weather_message
         {
           title: forecast.summary.capitalize,
-          body: "#{forecast.temperature}C / #{forecast.rain_probability * 100}%"
+          body: "#{forecast.temperature}C / #{rain_probability}%"
         }
       end
 
