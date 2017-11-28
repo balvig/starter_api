@@ -2,7 +2,15 @@
 
 API for https://github.com/balvig/starter
 
-## Installation
+## Development
+
+Run
+
+```
+rerun 'bundle exec rackup -p3000 config.ru'
+```
+
+## Deployment
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
