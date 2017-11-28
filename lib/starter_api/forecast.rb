@@ -2,7 +2,7 @@ require "open-weather-api"
 
 module StarterApi
   class Forecast
-    API_KEY = ENV["OPEN_WEATHER_API_KEY"]
+    API_KEY = ENV["OPEN_WEATHER_API_KEY"] || raise("Please set OPEN_WEATHER_API_KEY")
 
     def rain_probability
       (rain_data * 100).round
