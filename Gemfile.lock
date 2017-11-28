@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/wikiti/open-weather-api-rb
+  revision: 9244682a97a72dd31d95482c532f2e51512cd3a2
+  branch: fix-parameters-management
+  specs:
+    open-weather-api (0.0.7)
+      rest-client (~> 2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -15,8 +23,6 @@ GEM
     minitest (5.10.3)
     mustermann (1.0.1)
     netrc (0.11.0)
-    open-weather-api (0.0.7)
-      rest-client (~> 2.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -44,7 +50,7 @@ DEPENDENCIES
   dotenv
   ice_cube
   minitest
-  open-weather-api
+  open-weather-api!
   pry
   sinatra
 

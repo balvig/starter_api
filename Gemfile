@@ -5,7 +5,7 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 gem "dotenv"
 gem "ice_cube"
-gem "open-weather-api"
+gem "open-weather-api", github: "wikiti/open-weather-api-rb", branch: "fix-parameters-management"
 gem "sinatra"
 
 group :development do

@@ -27,7 +27,7 @@ module StarterApi
       end
 
       def fetch
-        api.raw "forecast", q: "Tokyo,jp", units: "metric"
+        api.forecast :hourly, city: "Tokyo", country_code: "jp"
       end
 
       def api
