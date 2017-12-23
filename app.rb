@@ -8,7 +8,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "sinatra"
 require "starter_api"
 
-get "/" do
-  content_type :json
-  StarterApi::Result.new.to_json
+get "/lifebox" do
+  content_type :txt
+  StarterApi::Lifebox.new.to_s
 end

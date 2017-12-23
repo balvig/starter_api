@@ -2,9 +2,9 @@ require "test_helper"
 
 module StarterApi
   class GarbageTest < Minitest::Test
-    def test_it_does_something_useful
-      garbage = Garbage.new
-      assert_equal :none, garbage.today
+    def test_it_works
+      garbage = Garbage.new Date.new(2017, 12, 22)
+      # require 'pry'; binding.pry
     end
   end
 end

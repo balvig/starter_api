@@ -2,30 +2,32 @@ require "ice_cube"
 
 module StarterApi
   class Garbage
+    TYPES = %i(recyclable combustible non_combustible pet_bottles)
+
     def initialize(date)
       @date = date
-      @rules = {
-        "Recyclable" => recyclable,
-        "Burnable" => combustible,
-        "Non-combustible" => non_combustible,
-        "PET bottles" => pet_bottles,
-      }
     end
 
     def run
-      find_garbage
+      results
     end
 
     private
 
-      attr_reader :rules, :date
+      attr_reader :date
 
-      def find_garbage
-        rules.find do |name, rule|
-          rule.occurs_on?(date)
-        end&.first
+      def results
+        TYPES.inject({}) do |result, type|
+          result.merge(type => garbage_day?(type))
+        end
       end
 
+      def garbage_day?(type)
+        rule = send(type)
+        rule.occurs_on?(date)
+      end
+
+      # Rules
       def recyclable
         build_schedule do |schedule|
           schedule.weekly.day(:monday)
