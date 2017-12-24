@@ -8,19 +8,15 @@ module StarterApi
       @date = date
     end
 
-    def run
-      results
+    def results
+      TYPES.inject({}) do |result, type|
+        result.merge(type => garbage_day?(type))
+      end
     end
 
     private
 
       attr_reader :date
-
-      def results
-        TYPES.inject({}) do |result, type|
-          result.merge(type => garbage_day?(type))
-        end
-      end
 
       def garbage_day?(type)
         rule = send(type)

@@ -3,6 +3,8 @@ require "starter_api/garbage"
 
 module StarterApi
   class Lifebox
+    PICKUP_TIME = 9
+
     def to_s
       led_values.join(",")
     end
@@ -24,7 +26,7 @@ module StarterApi
       end
 
       def garbage_leds
-        garbage.map do |type, active|
+        garbage.results.map do |type, active|
           active ? 1 : 0
         end
       end
@@ -34,7 +36,15 @@ module StarterApi
       end
 
       def garbage
-        @_garbage ||= Garbage.new(Date.today + 1).run
+        @_garbage ||= Garbage.new(garbage_date)
+      end
+
+      def garbage_date
+        if Time.now.hour >= PICKUP_TIME
+          Date.today + 1
+        else
+          Date.today
+        end
       end
   end
 end
