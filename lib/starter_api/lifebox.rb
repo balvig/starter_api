@@ -1,4 +1,4 @@
-require "starter_api/forecast"
+require "starter_api/weather"
 require "starter_api/garbage"
 
 module StarterApi
@@ -14,13 +14,23 @@ module StarterApi
       end
 
       def weather_leds
-        [0, 0, 0]
+        weather.forecast.map do |report|
+          case report.rain_intensity
+          when :light_rain then 1
+          when :heavy_rain then 2
+          else 0
+          end
+        end
       end
 
       def garbage_leds
         garbage.map do |type, active|
           active ? 1 : 0
         end
+      end
+
+      def weather
+        @_weather ||= Weather.new
       end
 
       def garbage
