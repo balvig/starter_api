@@ -16,8 +16,8 @@ module StarterApi
       def weather_leds
         weather.forecast.map do |report|
           case report.rain_intensity
-          when :light_rain then 1
-          when :heavy_rain then 2
+          when :light_rain then 2
+          when :heavy_rain then 1
           else 0
           end
         end
@@ -34,7 +34,7 @@ module StarterApi
       end
 
       def garbage
-        @_garbage ||= Garbage.new(Date.today + 6).run
+        @_garbage ||= Garbage.new(Date.today + 1).run
       end
   end
 end
