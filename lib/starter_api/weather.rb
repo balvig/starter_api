@@ -3,8 +3,7 @@ require "starter_api/weather_report"
 
 module StarterApi
   class Weather
-    #API_KEY = ENV["OPEN_WEATHER_API_KEY"] || raise("Please set OPEN_WEATHER_API_KEY")
-    API_KEY = "332fdec5a8eff2c55c0de182bbdcf045"
+    API_KEY = ENV["OPEN_WEATHER_API_KEY"] || raise("Please set OPEN_WEATHER_API_KEY")
 
     def forecast
       forecast_data.first(3).map do |data|
@@ -19,7 +18,7 @@ module StarterApi
       end
 
       def fetch
-        api.forecast :hourly, city: "Tokyo", country_code: "jp"
+        api.forecast :hourly, city: "Setagaya", country_code: "jp"
       end
 
       def api
