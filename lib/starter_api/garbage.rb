@@ -2,7 +2,7 @@ require "ice_cube"
 
 module StarterApi
   class Garbage
-    TYPES = %i(recyclable combustible non_combustible pet_bottles)
+    TYPES = %i(recyclable combustible pet_bottles non_combustible)
 
     def initialize(date)
       @date = date
