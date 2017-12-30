@@ -5,6 +5,12 @@ module StarterApi
   class Lifebox
     PICKUP_TIME = 9
 
+    def to_json
+      {
+        led_values: led_values
+      }.to_json
+    end
+
     def to_s
       led_values.join(",")
     end

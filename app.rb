@@ -9,6 +9,6 @@ require "sinatra"
 require "starter_api"
 
 get "/lifebox" do
-  content_type :txt
-  StarterApi::Lifebox.new.to_s
+  content_type :json
+  StarterApi::Lifebox.new.to_json
 end
