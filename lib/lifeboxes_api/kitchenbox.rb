@@ -1,8 +1,8 @@
-require "starter_api/weather"
-require "starter_api/garbage"
+require "lifeboxes_api/weather"
+require "lifeboxes_api/garbage"
 
-module StarterApi
-  class Lifebox
+module LifeboxesApi
+  class Kitchenbox
     PICKUP_TIME = 9
 
     def to_json

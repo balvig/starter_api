@@ -1,6 +1,6 @@
 require "yaml"
 
-module StarterApi
+module LifeboxesApi
   class WeatherReport
     WEATHER_CODES = YAML::load_file(File.join(__dir__, "weather_codes.yml"))
 

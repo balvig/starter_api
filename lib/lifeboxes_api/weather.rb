@@ -1,7 +1,7 @@
 require "open-weather-api"
-require "starter_api/weather_report"
+require "lifeboxes_api/weather_report"
 
-module StarterApi
+module LifeboxesApi
   class Weather
     API_KEY = ENV["OPEN_WEATHER_API_KEY"] || raise("Please set OPEN_WEATHER_API_KEY")
 

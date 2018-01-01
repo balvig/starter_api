@@ -6,9 +6,9 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 #Bundler.require :default, ENV["RACK_ENV"].to_sym
 
 require "sinatra"
-require "starter_api"
+require "lifeboxes_api"
 
-get "/lifebox" do
+get "/kitchen" do
   content_type :json
-  StarterApi::Lifebox.new.to_json
+  LifeboxesApi::Kitchenbox.new.to_json
 end

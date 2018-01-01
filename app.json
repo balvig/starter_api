@@ -1,6 +1,6 @@
-me": "Starter API",
-  "description": "Data API for Raspbery Pi project (https://github.com/balvig/starter)",
-  "repository": "https://github.com/balvig/starter_api",
+me": "Lifeboxes API",
+  "description": "Data API for IoT projects (https://github.com/balvig/lifeboxes)",
+  "repository": "https://github.com/balvig/lifeboxes_api",
   "env": {
     "TZ": {
       "description": "Time zone for getting correct dates"

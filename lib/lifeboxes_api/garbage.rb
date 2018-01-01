@@ -1,6 +1,6 @@
 require "ice_cube"
 
-module StarterApi
+module LifeboxesApi
   class Garbage
     TYPES = %i(recyclable combustible pet_bottles non_combustible)
 
