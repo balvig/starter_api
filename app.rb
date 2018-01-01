@@ -12,3 +12,8 @@ get "/kitchen" do
   content_type :json
   LifeboxesApi::Kitchenbox.new.to_json
 end
+
+get "/recycle" do
+  content_type :json
+  LifeboxesApi::Recyclebox.new.to_json
+end
