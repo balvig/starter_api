@@ -1,6 +1,6 @@
 # Lifeboxes API
 
-API for https://github.com/balvig/lifebox
+API for https://github.com/balvig/lifeboxes
 
 ## Development
 
