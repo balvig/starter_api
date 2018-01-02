@@ -11,5 +11,10 @@ module LifeboxesApi
       garbage = Garbage.new Date.new(2018, 1, 7)
       assert_equal 0, garbage.to_i
     end
+
+    def test_to_i_for_beginning_of_year
+      garbage = Garbage.new Date.new(2018, 1, 3)
+      assert_equal 0, garbage.to_i
+    end
   end
 end

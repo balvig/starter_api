@@ -58,9 +58,14 @@ module LifeboxesApi
         end
       end
 
+      def new_year_break
+        IceCube::Rule.yearly.day_of_year(1, 3)
+      end
+
       def build_schedule
         schedule = IceCube::Schedule.new
         schedule.add_recurrence_rule yield(IceCube::Rule)
+        schedule.add_exception_rule(new_year_break)
         schedule
       end
   end
