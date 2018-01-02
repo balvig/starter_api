@@ -15,16 +15,18 @@ module LifeboxesApi
     end
 
     def to_i
-      result = 0
-      results.values.each_with_index do |active, index|
-        result = index + 1 if active
-      end
-      result
+      garbage_id || 0
     end
 
     private
 
       attr_reader :date
+
+      def garbage_id
+        id = results.values.index(true)
+        id += 1 if id
+        id
+      end
 
       def garbage_day?(type)
         rule = send(type)
