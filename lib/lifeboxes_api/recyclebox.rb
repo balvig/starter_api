@@ -1,9 +1,9 @@
 require "lifeboxes_api/garbage"
+require "lifeboxes_api/servo_degrees"
 
 module LifeboxesApi
   class Recyclebox
     PICKUP_TIME = 9
-    OFFSET = 5
 
     def to_json
       {
@@ -14,13 +14,11 @@ module LifeboxesApi
     private
 
       def degrees
-        result = 180
-        garbage.results.values.each_with_index do |active, index|
-          if active
-            result -= (index + 1) * 45
-          end
-        end
-        result + OFFSET
+        ServoDegrees.new(selected).to_i
+      end
+
+      def selected
+        garbage.to_i + 1
       end
 
       def garbage

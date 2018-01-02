@@ -14,6 +14,14 @@ module LifeboxesApi
       end
     end
 
+    def to_i
+      result = 0
+      results.values.each_with_index do |active, index|
+        result = index + 1 if active
+      end
+      result
+    end
+
     private
 
       attr_reader :date
