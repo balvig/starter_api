@@ -26,9 +26,13 @@ module LifeboxesApi
     private
 
       def todays_lowest_temperatures
-        todays_forecast_data.map do |data|
+        temperature_data_sources.map do |data|
           data["main"]["temp_min"]
         end
+      end
+
+      def temperature_data_sources
+        todays_forecast_data + [current_data]
       end
 
       def todays_forecast_data
