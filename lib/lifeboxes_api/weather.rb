@@ -10,7 +10,7 @@ module LifeboxesApi
     }
 
     def forecast
-      hourly_forecast_data.first(3).map do |data|
+      forecast_data.first(3).map do |data|
         WeatherReport.new(data)
       end
     end
@@ -20,21 +20,29 @@ module LifeboxesApi
     end
 
     def todays_lowest_temperature
-      todays_forecast_data["main"]["temp_min"].round
+      todays_lowest_temperatures.min.round
     end
 
     private
 
-      def hourly_forecast_data
+      def todays_lowest_temperatures
+        todays_forecast_data.map do |data|
+          data["main"]["temp_min"]
+        end
+      end
+
+      def todays_forecast_data
+        forecast_data.find_all do |data|
+          Time.at(data["dt"]).to_date == Date.today
+        end
+      end
+
+      def forecast_data
         @_forecast_data ||= api.forecast(:hourly, DEFAULTS)["list"]
       end
 
       def current_data
         @_current_data ||= api.current(DEFAULTS)
-      end
-
-      def todays_forecast_data
-        @_todays_forecast_data ||= api.forecast(:daily, DEFAULTS)["list"].first
       end
 
       def api
