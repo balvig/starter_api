@@ -8,25 +8,19 @@ module LifeboxesApi
       @date = date
     end
 
-    def results
-      TYPES.inject({}) do |result, type|
-        result.merge(type => garbage_day?(type))
+    def current
+      TYPES.find do |type|
+        garbage_day?(type)
       end
     end
 
     def to_i
-      garbage_id || 0
+      TYPES.index(current)
     end
 
     private
 
       attr_reader :date
-
-      def garbage_id
-        id = results.values.index(true)
-        id += 1 if id
-        id
-      end
 
       def garbage_day?(type)
         rule = send(type)
