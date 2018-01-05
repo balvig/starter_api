@@ -4,6 +4,7 @@ require "lifeboxes_api/servo_degrees"
 module LifeboxesApi
   class Recyclebox
     PICKUP_TIME = 9
+    CHOICES = Garbage::TYPES.size + 2 # include no gargbage and "off" position
 
     def to_json
       {
@@ -14,11 +15,11 @@ module LifeboxesApi
     private
 
       def degrees
-        ServoDegrees.new(selected).to_i
+        ServoDegrees.new(selected, choices: CHOICES).to_i
       end
 
       def selected
-        garbage.to_i + 1
+        garbage.to_i + 2 # 0-based index plus "off" position
       end
 
       def garbage

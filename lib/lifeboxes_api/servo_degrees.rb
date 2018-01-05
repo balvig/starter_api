@@ -1,7 +1,6 @@
 module LifeboxesApi
   class ServoDegrees
     TOTAL_DEGREES = 180
-    OFFSET = 5
 
     def initialize(selected, choices: 5)
       @selected = selected
@@ -9,7 +8,7 @@ module LifeboxesApi
     end
 
     def to_i
-      TOTAL_DEGREES - degrees_to_subtract + OFFSET
+      TOTAL_DEGREES - degrees_to_subtract
     end
 
     private
