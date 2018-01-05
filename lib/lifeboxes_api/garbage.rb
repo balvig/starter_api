@@ -14,10 +14,6 @@ module LifeboxesApi
       end
     end
 
-    def to_i
-      TYPES.index(current)
-    end
-
     private
 
       attr_reader :date
