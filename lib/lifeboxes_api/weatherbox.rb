@@ -2,6 +2,12 @@ require "lifeboxes_api/weather"
 
 module LifeboxesApi
   class Weatherbox
+    LED_STATES = {
+      off: 0,
+      on: 1,
+      pulse: 2
+    }
+
     def to_json
       {
         led_values: led_values,
@@ -18,9 +24,9 @@ module LifeboxesApi
       def weather_leds
         weather.forecast.map do |report|
           case report.rain_intensity
-          # when :light_rain then 1
-          when :heavy_rain then 2
-          else 0
+          when :light_rain then LED_STATES[:pulse]
+          when :heavy_rain then LED_STATES[:on]
+          else LED_STATES[:off]
           end
         end
       end
