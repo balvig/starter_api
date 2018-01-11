@@ -14,16 +14,20 @@ module LifeboxesApi
       end&.first&.to_sym
     end
 
+    def temperature
+      data["main"]["temp"].round
+    end
+
+    def lowest_temperature
+      data["main"]["temp_min"].round
+    end
+
     private
 
       attr_reader :data
 
       def code
         data["weather"].first["id"]
-      end
-
-      def temperature
-        data["main"]["temp"].round
       end
   end
 end

@@ -10,29 +10,31 @@ module LifeboxesApi
     }
 
     def forecast
-      forecast_data.first(3).map do |data|
-        WeatherReport.new(data)
-      end
+      reports.first(3)
     end
 
     def current_temperature
-      current_data["main"]["temp"].round
+      reports.first.temperature
     end
 
     def todays_lowest_temperature
-      todays_lowest_temperatures.min.round
+      todays_lowest_temperatures.min
     end
 
     private
 
       def todays_lowest_temperatures
-        temperature_data_sources.map do |data|
-          data["main"]["temp_min"]
+        reports.map(&:lowest_temperature)
+      end
+
+      def reports
+        data_sources.map do |data|
+          WeatherReport.new(data)
         end
       end
 
-      def temperature_data_sources
-        todays_forecast_data + [current_data]
+      def data_sources
+        [current_data] + todays_forecast_data
       end
 
       def todays_forecast_data
