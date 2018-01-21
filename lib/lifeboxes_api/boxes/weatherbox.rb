@@ -1,4 +1,4 @@
-require "lifeboxes_api/weather"
+require "lifeboxes_api/apis/weather"
 
 module LifeboxesApi
   class Weatherbox

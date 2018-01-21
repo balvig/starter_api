@@ -1,4 +1,4 @@
-require "lifeboxes_api/garbage"
+require "lifeboxes_api/apis/garbage"
 require "lifeboxes_api/servo_degrees"
 
 module LifeboxesApi

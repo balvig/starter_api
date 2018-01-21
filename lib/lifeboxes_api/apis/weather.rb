@@ -1,5 +1,5 @@
 require "open-weather-api"
-require "lifeboxes_api/weather_report"
+require "lifeboxes_api/apis/weather_report"
 
 module LifeboxesApi
   class Weather
