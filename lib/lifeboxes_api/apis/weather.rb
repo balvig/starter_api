@@ -34,7 +34,7 @@ module LifeboxesApi
       end
 
       def data_sources
-        [current_data] + todays_forecast_data
+        [current_data] + forecast_data.first(3)
       end
 
       def todays_forecast_data
