@@ -8,9 +8,9 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "sinatra"
 require "lifeboxes_api"
 
-get "/weather" do
+get "/rain" do
   content_type :json
-  LifeboxesApi::Weatherbox.new.to_json
+  LifeboxesApi::Rainbox.new.to_json
 end
 
 get "/recycle" do

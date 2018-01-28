@@ -8,6 +8,10 @@ module LifeboxesApi
       @data = data
     end
 
+    def date
+      Time.at(timestamp).to_date
+    end
+
     def rain_intensity
       WEATHER_CODES.find do |name, codes|
         codes.include?(code)
@@ -28,6 +32,10 @@ module LifeboxesApi
 
       def code
         data["weather"].first["id"]
+      end
+
+      def timestamp
+        data["dt"]
       end
   end
 end
