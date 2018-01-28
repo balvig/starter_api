@@ -1,4 +1,5 @@
-me": "Lifeboxes API",
+{
+  "name": "Lifeboxes API",
   "description": "Data API for IoT projects (https://github.com/balvig/lifeboxes)",
   "repository": "https://github.com/balvig/lifeboxes_api",
   "env": {
@@ -7,7 +8,9 @@ me": "Lifeboxes API",
     },
     "OPEN_WEATHER_API_KEY": {
       "description": "API key for getting weather data"
+    },
+    "YAHOO_APPLICATION_ID": {
+      "description": "Yahoo Japan app id for getting current rain data"
     }
   }
 }
-
