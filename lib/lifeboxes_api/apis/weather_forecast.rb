@@ -9,6 +9,10 @@ module LifeboxesApi
       country_code: "jp"
     }
 
+    def current
+      WeatherReport.new(current_data)
+    end
+
     def reports
       forecast_data.first(3).map do |data|
         WeatherReport.new(data)
@@ -19,6 +23,10 @@ module LifeboxesApi
 
       def forecast_data
         @_forecast_data ||= api.forecast(:hourly, DEFAULTS)["list"]
+      end
+
+      def current_data
+        @_current_data ||= api.current(DEFAULTS)
       end
 
       def api

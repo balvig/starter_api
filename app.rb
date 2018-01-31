@@ -8,17 +8,17 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "sinatra"
 require "lifeboxes_api"
 
-get "/rain" do
+get "/:box" do
   content_type :json
-  LifeboxesApi::Rainbox.new.to_json
+  box.new.to_json
 end
 
-get "/recycle" do
-  content_type :json
-  LifeboxesApi::Recyclebox.new.to_json
-end
+private
 
-get "/kitchen" do
-  content_type :json
-  LifeboxesApi::Kitchenbox.new.to_json
-end
+  def box
+    Object.const_get(box_name)
+  end
+
+  def box_name
+    "LifeboxesApi::#{params[:box].capitalize}box"
+  end
