@@ -20,10 +20,12 @@ module LifeboxesApi
 
       def temperature_screen
         <<~TEXT
-        #{Date.today.strftime("%A")}
+        #{day}
         ---
         High: #{current_weather.temperature}C
         Low: #{lowest_temperature}C
+
+        (#{last_update})
         TEXT
       end
 
@@ -37,6 +39,14 @@ module LifeboxesApi
 
       def other_debug_screen
         "Word"
+      end
+
+      def day
+        Date.today.strftime("%A")
+      end
+
+      def last_update
+        Time.now.strftime("%k:%M")
       end
 
       def temperatures
