@@ -2,9 +2,10 @@ require "ice_cube"
 
 module LifeboxesApi
   class Garbage
+    PICKUP_TIME = 9
     TYPES = %i(recyclable combustible pet_bottles non_combustible)
 
-    def initialize(date)
+    def initialize(date = default_date)
       @date = date
     end
 
@@ -17,6 +18,14 @@ module LifeboxesApi
     private
 
       attr_reader :date
+
+      def default_date
+        if Time.now.hour >= PICKUP_TIME
+          Date.today + 1
+        else
+          Date.today
+        end
+      end
 
       def garbage_day?(type)
         rule = send(type)

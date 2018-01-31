@@ -4,19 +4,39 @@ module LifeboxesApi
   class Statusbox
     def to_json
       {
-        message: messages.join("\n"),
+        screens: screens
       }.to_json
     end
 
     private
 
-      def messages
+      def screens
         [
-          Date.today.strftime("%A"),
-          "---",
-          "High: #{current_weather.temperature}C",
-          "Low: #{lowest_temperature}C"
+          temperature_screen,
+          recycle_screen,
+          other_debug_screen
         ]
+      end
+
+      def temperature_screen
+        <<~TEXT
+        #{Date.today.strftime("%A")}
+        ---
+        High: #{current_weather.temperature}C
+        Low: #{lowest_temperature}C
+        TEXT
+      end
+
+      def recycle_screen
+        <<~TEXT
+        Recycling
+        ---
+        #{garbage.current || "No garbage"}
+        TEXT
+      end
+
+      def other_debug_screen
+        "Word"
       end
 
       def temperatures
@@ -41,6 +61,10 @@ module LifeboxesApi
 
       def weather
         @_weather ||= WeatherForecast.new
+      end
+
+      def garbage
+        @_garbage ||= Garbage.new
       end
   end
 end

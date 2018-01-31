@@ -3,7 +3,6 @@ require "lifeboxes_api/servo_degrees"
 
 module LifeboxesApi
   class Recyclebox
-    PICKUP_TIME = 9
     CHOICES = [:off, :nothing] + Garbage::TYPES
 
     def to_json
@@ -27,15 +26,7 @@ module LifeboxesApi
       end
 
       def garbage
-        @_garbage ||= Garbage.new(garbage_date)
-      end
-
-      def garbage_date
-        if Time.now.hour >= PICKUP_TIME
-          Date.today + 1
-        else
-          Date.today
-        end
+        @_garbage ||= Garbage.new
       end
   end
 end
