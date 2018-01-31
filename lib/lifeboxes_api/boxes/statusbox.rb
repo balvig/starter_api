@@ -22,7 +22,7 @@ module LifeboxesApi
 
       def temperature_screen
         <<~TEXT
-        #{day}
+        #{day.upcase}
         #{BORDER}
         High: #{current_weather.temperature}C
         Low: #{lowest_temperature}C
@@ -31,7 +31,7 @@ module LifeboxesApi
 
       def weather_codes_screen
         <<~TEXT
-        Weather
+        WEATHER
         #{BORDER}
         #{weather_codes}
         TEXT
@@ -45,7 +45,7 @@ module LifeboxesApi
 
       def recycle_screen
         <<~TEXT
-        Recycling
+        RECYCLING
         #{BORDER}
         #{garbage.current || "No garbage"}
         TEXT
