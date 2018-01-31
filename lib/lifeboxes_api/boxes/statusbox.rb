@@ -24,7 +24,7 @@ module LifeboxesApi
         <<~TEXT
         #{day.upcase}
         #{BORDER}
-        High: #{current_weather.temperature}C
+        Now: #{current_weather.temperature}C
         Low: #{lowest_temperature}C
         TEXT
       end
