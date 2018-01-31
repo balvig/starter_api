@@ -2,6 +2,8 @@ require "lifeboxes_api/apis/weather_forecast"
 
 module LifeboxesApi
   class Statusbox
+    BORDER = "----------"
+
     def to_json
       {
         screens: screens
@@ -13,40 +15,44 @@ module LifeboxesApi
       def screens
         [
           temperature_screen,
+          weather_codes_screen,
           recycle_screen,
-          other_debug_screen
         ]
       end
 
       def temperature_screen
         <<~TEXT
         #{day}
-        ---
+        #{BORDER}
         High: #{current_weather.temperature}C
         Low: #{lowest_temperature}C
-
-        (#{last_update})
         TEXT
+      end
+
+      def weather_codes_screen
+        <<~TEXT
+        Weather
+        #{BORDER}
+        #{weather_codes}
+        TEXT
+      end
+
+      def weather_codes
+        weather.reports.map do |report|
+          "#{report.time.strftime("%k:%M")} #{report.code}"
+        end.join("\n")
       end
 
       def recycle_screen
         <<~TEXT
         Recycling
-        ---
+        #{BORDER}
         #{garbage.current || "No garbage"}
         TEXT
       end
 
-      def other_debug_screen
-        "Word"
-      end
-
       def day
         Date.today.strftime("%A")
-      end
-
-      def last_update
-        Time.now.strftime("%k:%M")
       end
 
       def temperatures
