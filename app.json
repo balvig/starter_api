@@ -6,6 +6,9 @@
     "TZ": {
       "description": "Time zone for getting correct dates"
     },
+    "OCTOKIT_ACCESS_TOKEN": {
+      "description": "GitHub access token for getting build status"
+    }
     "OPEN_WEATHER_API_KEY": {
       "description": "API key for getting weather data"
     },

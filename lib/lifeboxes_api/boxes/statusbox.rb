@@ -1,3 +1,5 @@
+require "lifeboxes_api/apis/github"
+require "lifeboxes_api/apis/garbage"
 require "lifeboxes_api/apis/weather"
 
 module LifeboxesApi
@@ -16,7 +18,8 @@ module LifeboxesApi
         [
           temperature_screen,
           weather_codes_screen,
-          recycle_screen
+          recycle_screen,
+          github_screen
         ]
       end
 
@@ -51,6 +54,14 @@ module LifeboxesApi
         TEXT
       end
 
+      def github_screen
+        <<~TEXT
+        GITHUB
+        #{BORDER}
+        #{github.statuses.join("\n")}
+        TEXT
+      end
+
       def day
         Date.today.strftime("%A")
       end
@@ -65,6 +76,10 @@ module LifeboxesApi
 
       def garbage
         @_garbage ||= Garbage.new
+      end
+
+      def github
+        @_github ||= Github.new
       end
   end
 end
