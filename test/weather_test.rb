@@ -1,9 +1,9 @@
 require "test_helper"
 
 module LifeboxesApi
-  class WeatherForecastTest < Minitest::Test
+  class WeatherTest < Minitest::Test
     def test_rain_intensity
-      weather = WeatherForecast.new
+      weather = Weather.new
       assert_equal :light_rain, weather.reports.first.rain_intensity
     end
 

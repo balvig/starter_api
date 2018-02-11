@@ -2,7 +2,7 @@ require "open-weather-api"
 require "lifeboxes_api/apis/weather_report"
 
 module LifeboxesApi
-  class WeatherForecast
+  class Weather
     API_KEY = ENV["OPEN_WEATHER_API_KEY"] || raise("Please set OPEN_WEATHER_API_KEY")
     DEFAULTS = {
       city: "Setagaya",
@@ -13,13 +13,21 @@ module LifeboxesApi
       WeatherReport.new(current_data)
     end
 
-    def reports
+    def forecasts
       forecast_data.first(3).map do |data|
         WeatherReport.new(data)
       end
     end
 
+    def lowest_temperature
+      all_lowest_temperatures.min
+    end
+
     private
+
+      def all_lowest_temperatures
+        ([current] + forecasts).map(&:lowest_temperature)
+      end
 
       def forecast_data
         @_forecast_data ||= api.forecast(:hourly, DEFAULTS)["list"]

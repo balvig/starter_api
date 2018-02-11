@@ -1,5 +1,5 @@
 require "lifeboxes_api/apis/current_rain"
-require "lifeboxes_api/apis/weather_forecast"
+require "lifeboxes_api/apis/weather"
 
 module LifeboxesApi
   class Rainbox
@@ -28,12 +28,12 @@ module LifeboxesApi
       end
 
       def rain_reports
-        [current_rain.report] + weather_forecast.reports
+        [current_rain.report] + weather.forecasts
       end
 
 
-      def weather_forecast
-        @_weather ||= WeatherForecast.new
+      def weather
+        @_weather ||= Weather.new
       end
 
       def current_rain

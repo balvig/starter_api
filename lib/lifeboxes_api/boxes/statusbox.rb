@@ -1,4 +1,4 @@
-require "lifeboxes_api/apis/weather_forecast"
+require "lifeboxes_api/apis/weather"
 
 module LifeboxesApi
   class Statusbox
@@ -16,7 +16,7 @@ module LifeboxesApi
         [
           temperature_screen,
           weather_codes_screen,
-          recycle_screen,
+          recycle_screen
         ]
       end
 
@@ -24,8 +24,8 @@ module LifeboxesApi
         <<~TEXT
         #{day.upcase}
         #{BORDER}
-        Now: #{current_weather.temperature}C
-        Low: #{lowest_temperature}C
+        Now: #{weather.current.temperature}C
+        Low: #{weather.lowest_temperature}C
         TEXT
       end
 
@@ -38,7 +38,7 @@ module LifeboxesApi
       end
 
       def weather_codes
-        weather.reports.map do |report|
+        forecasts.map do |report|
           "#{report.time.strftime("%k:%M")} #{report.code}"
         end.join("\n")
       end
@@ -55,28 +55,12 @@ module LifeboxesApi
         Date.today.strftime("%A")
       end
 
-      def temperatures
-        [current_weather_message, lowest_temperature_message]
-      end
-
-      def lowest_temperature
-        all_lowest_temperatures.min
-      end
-
-      def all_lowest_temperatures
-        ([current_weather] + forecasts).map(&:lowest_temperature)
-      end
-
-      def current_weather
-        weather.current
-      end
-
       def forecasts
-        weather.reports
+        weather.forecasts
       end
 
       def weather
-        @_weather ||= WeatherForecast.new
+        @_weather ||= Weather.new
       end
 
       def garbage
