@@ -1,9 +1,7 @@
+require "lifeboxes_api/apis/mahalojournal"
+
 module LifeboxesApi
   class Inspirebox
-    URL = "http://www.mahalojournal.com/item"
-    require "net/http"
-    require "json"
-
     def to_json
       {
         text: random_mahalo_journal_entry
@@ -13,11 +11,7 @@ module LifeboxesApi
     private
 
       def random_mahalo_journal_entry
-        JSON.parse(json_response)["title"]
-      end
-
-      def json_response
-        Net::HTTP.get URI(URL)
+        Mahalojournal.new.random
       end
   end
 end
