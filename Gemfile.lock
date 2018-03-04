@@ -15,6 +15,7 @@ GEM
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.2.1)
+    facets (3.1.0)
     faraday (0.14.0)
       multipart-post (>= 1.2, < 3)
     http-cookie (1.0.3)
@@ -59,6 +60,7 @@ PLATFORMS
 
 DEPENDENCIES
   dotenv
+  facets
   ice_cube
   minitest
   octokit
