@@ -2,7 +2,7 @@ require "facets/string/word_wrap"
 
 module LifeboxesApi
   class Linebreaker
-    MAX_CHARS_PER_LINE = 36
+    MAX_CHARS_PER_LINE = 34
 
     def initialize(text)
       @text = text
