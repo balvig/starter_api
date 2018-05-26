@@ -19,5 +19,11 @@ module LifeboxesApi
 
       assert_equal "Getting a spontaneous foot\nmassage after a long day", result
     end
+
+    def test_linebreaking_4
+      result = Linebreaker.new("The iPhone case Megumi's mom made for me, such a nice thought!").run
+
+      assert_equal "The iPhone case Megumi's mom\nmade for me, such a nice\nthought!", result
+    end
   end
 end
