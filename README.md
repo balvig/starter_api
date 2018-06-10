@@ -7,7 +7,7 @@ API for https://github.com/balvig/lifeboxes
 Run
 
 ```
-rerun 'bundle exec rackup -p3000 config.ru'
+bundle exec rackup -p3000 config.ru
 ```
 
 ## Deployment

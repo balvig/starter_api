@@ -10,7 +10,13 @@ require "lifeboxes_api"
 
 get "/:box" do
   content_type :json
-  box.new.to_json
+
+  begin
+    box.new.to_json
+  rescue NameError
+    status 404
+    { error: "not_found"}.to_json
+  end
 end
 
 private
