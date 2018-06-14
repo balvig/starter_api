@@ -1,49 +1,17 @@
 module LifeboxesApi
   class Ui
-    require "lifeboxes_api/cursor"
     require "rmagick"
+    require "lifeboxes_api/widget"
 
     def initialize
       @width = 128
       @height = 250
       @canvas = Magick::Image.new(width, height)
-
-      @y = 0
-      @x = 0
     end
 
     def render
-
-      widgets.each_with_index do |widget, i|
-        # Start
-        widget_y = i * widget_height
-
-
-        # Title
-        cursor.y = widget_y
-        cursor.font = :label
-        cursor.text widget["title"], linebreak: 1.25
-
-        # -> List
-        widget.fetch("items", {}).each do |item|
-          msg = item["title"]
-          status = item["status"]
-
-          cursor.font = :body
-          cursor.text(msg)
-          cursor.text(status, x: width - 10, linebreak: 1.5)
-        end
-
-        # -> Count
-        count = widget["count"]
-        if count
-          cursor.font = :count
-          cursor.text(count.to_s, center: true)
-        end
-
-        # Divider
-        cursor.y = widget_y + widget_height
-        cursor.horizontal_line
+      widgets.each_with_index do |data, i|
+        Widget.new(data: data, canvas: canvas, y: i * widget_height, height: widget_height).draw
       end
 
       canvas.to_blob { self.format = "jpg" }
@@ -59,10 +27,6 @@ module LifeboxesApi
 
       def widget_height
         height / widgets.size
-      end
-
-      def cursor
-        @_cursor ||= Cursor.new(canvas)
       end
   end
 end
