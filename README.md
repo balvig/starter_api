@@ -6,8 +6,8 @@ API for https://github.com/balvig/lifeboxes
 
 Run
 
-```
-bundle exec rackup -p3000 config.ru
+```bash
+$ bin/server
 ```
 
 ## Deployment

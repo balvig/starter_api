@@ -8,6 +8,12 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "sinatra"
 require "lifeboxes_api"
 
+get "/work" do
+  require "lifeboxes_api/ui"
+  content_type "image/jpeg"
+  LifeboxesApi::Ui.new.render
+end
+
 get "/:box" do
   content_type :json
 

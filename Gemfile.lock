@@ -18,9 +18,14 @@ GEM
     facets (3.1.0)
     faraday (0.14.0)
       multipart-post (>= 1.2, < 3)
+    ffi (1.9.25)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     ice_cube (0.16.2)
+    listen (3.1.5)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
+      ruby_dep (~> 1.2)
     method_source (0.9.0)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
@@ -38,10 +43,17 @@ GEM
     rack (2.0.5)
     rack-protection (2.0.2)
       rack
+    rb-fsevent (0.10.3)
+    rb-inotify (0.9.10)
+      ffi (>= 0.5.0, < 2)
+    rerun (0.13.0)
+      listen (~> 3.0)
     rest-client (2.0.2)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rmagick (2.16.0)
+    ruby_dep (1.5.0)
     sawyer (0.8.1)
       addressable (>= 2.3.5, < 2.6)
       faraday (~> 0.8, < 1.0)
@@ -66,6 +78,8 @@ DEPENDENCIES
   octokit
   open-weather-api!
   pry
+  rerun
+  rmagick
   sinatra
 
 RUBY VERSION

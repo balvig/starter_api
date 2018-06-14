@@ -9,9 +9,11 @@ gem "ice_cube"
 gem "octokit"
 gem "open-weather-api", github: "wikiti/open-weather-api-rb", branch: "fix-parameters-management"
 gem "sinatra"
+gem "rmagick"
 
 group :development do
   gem "pry"
+  gem "rerun"
 end
 
 group :test do

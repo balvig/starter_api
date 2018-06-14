@@ -5,6 +5,7 @@ require "lifeboxes_api/boxes/kitchenbox"
 require "lifeboxes_api/boxes/rainbox"
 require "lifeboxes_api/boxes/recyclebox"
 require "lifeboxes_api/boxes/statusbox"
+require "lifeboxes_api/boxes/workbox"
 
 module LifeboxesApi
 end
