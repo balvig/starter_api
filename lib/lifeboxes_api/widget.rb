@@ -23,7 +23,8 @@ module LifeboxesApi
       def draw_title
         cursor.y = y
         cursor.font = :label
-        cursor.text data["title"], linebreak: 1.25
+        cursor.text data["title"]
+        cursor.linebreak(1.25)
       end
 
       def draw_list
@@ -33,7 +34,10 @@ module LifeboxesApi
 
           cursor.font = :body
           cursor.text(title)
-          cursor.text(status, x: width - 10, linebreak: 1.5)
+          cursor.x = -10
+          cursor.text(status)
+          cursor.linebreak(1.5)
+          cursor.x = 0
         end
       end
 
@@ -48,10 +52,6 @@ module LifeboxesApi
       def draw_divider
         cursor.y = y + height
         cursor.horizontal_line
-      end
-
-      def width
-        canvas.columns
       end
 
       def cursor

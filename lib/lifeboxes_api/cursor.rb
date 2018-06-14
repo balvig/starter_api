@@ -2,7 +2,8 @@ module LifeboxesApi
   class Cursor
     require "rmagick"
 
-    attr_accessor :x, :y, :font
+    attr_accessor :y, :font
+    attr_reader :x
 
     FONTS = {
       body: ["FreeMono", 12],
@@ -17,7 +18,7 @@ module LifeboxesApi
       @y = 0
     end
 
-    def text(text, x: 0, center: false, linebreak: false)
+    def text(text, center: false)
       commit do
         text_x = x
         text_y = y + line_height
@@ -28,16 +29,24 @@ module LifeboxesApi
         end
 
         draw.text(text_x, text_y, text)
-
-        if linebreak
-          move_down line_height(linebreak)
-        end
       end
+    end
+
+    def linebreak(factor)
+      move_down line_height(factor)
     end
 
     def horizontal_line
       commit do
         draw.line(0, y, width, y)
+      end
+    end
+
+    def x=(new_x)
+      if new_x < 0
+        @x = width + new_x
+      else
+        @x = new_x
       end
     end
 
@@ -64,11 +73,6 @@ module LifeboxesApi
         settings = FONTS[font]
         @draw.font = "fonts/#{settings.first}.ttf"
         @draw.pointsize = settings.last
-      end
-
-      def move_to(x: nil, y: nil)
-        @y = y if y
-        @x = x if x
       end
 
       def move_down(distance)
