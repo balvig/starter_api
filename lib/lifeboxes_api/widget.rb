@@ -13,6 +13,8 @@ module LifeboxesApi
       draw_title
       draw_list
       draw_count
+      draw_header
+      draw_footer
       draw_divider
     end
 
@@ -46,6 +48,24 @@ module LifeboxesApi
         if count
           cursor.font = :count
           cursor.text(count.to_s, center: true)
+        end
+      end
+
+      def draw_header
+        header = data["header"]
+        if header
+          cursor.font = :header
+          cursor.linebreak(0.25)
+          cursor.text(header, center: true)
+          cursor.linebreak(1.25)
+        end
+      end
+
+      def draw_footer
+        footer = data["footer"]
+        if footer
+          cursor.font = :body
+          cursor.text(footer, center: true)
         end
       end
 

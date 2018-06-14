@@ -32,7 +32,7 @@ module LifeboxesApi
       end
     end
 
-    def linebreak(factor)
+    def linebreak(factor = 1)
       move_down line_height(factor)
     end
 
