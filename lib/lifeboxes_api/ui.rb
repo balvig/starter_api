@@ -14,7 +14,7 @@ module LifeboxesApi
         Widget.new(data: data, canvas: canvas, y: i * widget_height, height: widget_height).draw
       end
 
-      canvas.to_blob { self.format = "jpg" }
+      canvas.to_blob { self.format = "png" }
     end
 
     private

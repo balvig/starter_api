@@ -6,7 +6,7 @@ module LifeboxesApi
     attr_reader :x
 
     FONTS = {
-      body: ["FreeMono", 12],
+      body: ["Lato-Medium", 12],
       label: ["FreeMonoBold", 12],
       count: ["Lato-Semibold", 36],
       header: ["Lato-Semibold", 24]
@@ -14,6 +14,7 @@ module LifeboxesApi
 
     def initialize(canvas)
       @canvas = canvas
+      @font = :body
       @x = 0
       @y = 0
     end

@@ -35,10 +35,11 @@ module LifeboxesApi
           status = item["status"]
 
           cursor.font = :body
+          cursor.linebreak(0.25)
           cursor.text(title)
-          cursor.x = -10
+          cursor.x = -20
           cursor.text(status)
-          cursor.linebreak(1.5)
+          cursor.linebreak(1.25)
           cursor.x = 0
         end
       end
