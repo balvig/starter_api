@@ -1,7 +1,7 @@
 module LifeboxesApi
   class Dashboard
     require "rmagick"
-    require "lifeboxes_api/widget"
+    require "lifeboxes_api/dashboard/widget"
 
     def initialize(width:, height:, widgets:)
       @width = width
