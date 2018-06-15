@@ -37,10 +37,8 @@ module LifeboxesApi
           cursor.font = :body
           cursor.linebreak(0.25)
           cursor.text(title)
-          cursor.x = -20
-          cursor.text(status)
+          cursor.text(status, align: :right)
           cursor.linebreak(1.25)
-          cursor.x = 0
         end
       end
 
@@ -48,7 +46,7 @@ module LifeboxesApi
         count = data[:count]
         if count
           cursor.font = :count
-          cursor.text(count.to_s, center: true)
+          cursor.text(count.to_s, align: :center)
         end
       end
 
@@ -57,7 +55,7 @@ module LifeboxesApi
         if header
           cursor.font = :header
           cursor.linebreak(0.25)
-          cursor.text(header, center: true)
+          cursor.text(header, align: :center)
           cursor.linebreak(1.1)
         end
       end
@@ -66,7 +64,7 @@ module LifeboxesApi
         footer = data[:footer]
         if footer
           cursor.font = :body
-          cursor.text(footer, center: true)
+          cursor.text(footer, align: :center)
         end
       end
 

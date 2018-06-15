@@ -1,5 +1,6 @@
 module LifeboxesApi
   class Cursor
+    DISPLAY_OFFSET_ERROR = 6
     require "rmagick"
 
     attr_accessor :y, :font
@@ -19,14 +20,18 @@ module LifeboxesApi
       @y = 0
     end
 
-    def text(text, center: false)
+    def text(text, align: :left)
       commit do
         text_x = x
         text_y = y + line_height
 
-        if center
+        case align
+        when :center
           draw.text_align(Magick::CenterAlign)
           text_x = width / 2
+        when :right
+          draw.text_align(Magick::RightAlign)
+          text_x = width
         end
 
         draw.text(text_x, text_y, text)
@@ -62,7 +67,7 @@ module LifeboxesApi
       end
 
       def width
-        canvas.columns
+        canvas.columns - DISPLAY_OFFSET_ERROR
       end
 
       def height
