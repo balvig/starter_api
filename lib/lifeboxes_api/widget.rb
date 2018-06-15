@@ -25,12 +25,12 @@ module LifeboxesApi
       def draw_title
         cursor.y = y
         cursor.font = :label
-        cursor.text data[:title]
+        cursor.text data[:title].upcase
         cursor.linebreak(1.25)
       end
 
       def draw_list
-        data.fetch(:items, {}).each do |item|
+        data.fetch(:items, []).each do |item|
           title = item[:title]
           status = item[:status]
 
@@ -58,7 +58,7 @@ module LifeboxesApi
           cursor.font = :header
           cursor.linebreak(0.25)
           cursor.text(header, center: true)
-          cursor.linebreak(1.25)
+          cursor.linebreak(1.1)
         end
       end
 

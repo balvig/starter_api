@@ -40,12 +40,6 @@ module LifeboxesApi
         TEXT
       end
 
-      def weather_codes
-        forecasts.map do |report|
-          "#{report.time.strftime("%k:%M")} #{report.code}"
-        end.join("\n")
-      end
-
       def recycle_screen
         <<~TEXT
         RECYCLING
@@ -58,7 +52,7 @@ module LifeboxesApi
         <<~TEXT
         GITHUB
         #{BORDER}
-        #{github.statuses.join("\n")}
+        #{github.statuses.map(&:to_s).join("\n")}
         TEXT
       end
 
@@ -68,6 +62,12 @@ module LifeboxesApi
 
       def forecasts
         weather.forecasts
+      end
+
+      def weather_codes
+        forecasts.map do |report|
+          "#{report.time.strftime("%k:%M")} #{report.code}"
+        end.join("\n")
       end
 
       def weather

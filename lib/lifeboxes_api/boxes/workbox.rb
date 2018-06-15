@@ -20,8 +20,34 @@ module LifeboxesApi
       end
 
       def widgets
-        [prs, reviews, meetings]
+        #[prs, reviews, meetings]
+
+        [weather_widget, recycle_widget, github_widget]
       end
+
+      def weather_widget
+        {
+          title: "Weather",
+          header: "#{weather.current.temperature}C",
+          footer: "Low: #{weather.lowest_temperature}C"
+        }
+      end
+
+      def recycle_widget
+        {
+          title: "Recycling",
+          header: garbage.current || "-"
+        }
+      end
+
+      def github_widget
+        {
+          title: "GitHub",
+          items: github.statuses.map(&:to_h)
+        }
+      end
+
+
 
       def prs
         {
@@ -56,6 +82,18 @@ module LifeboxesApi
           header: "4:00PM",
           footer: "(in 32 mins)"
         }
+      end
+
+      def weather
+        @_weather ||= Weather.new
+      end
+
+      def garbage
+        @_garbage ||= Garbage.new
+      end
+
+      def github
+        @_github ||= Github.new
       end
   end
 end
