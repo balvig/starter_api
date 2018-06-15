@@ -36,7 +36,7 @@ module LifeboxesApi
       def recycle_widget
         {
           title: "Recycling",
-          header: garbage.current || "-"
+          header: garbage.current || "None"
         }
       end
 
