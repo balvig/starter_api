@@ -1,2 +1,2 @@
 #!/usr/bin/env ruby
-system("bundle exec rackup config.ru -p5000")
+system("rerun -- rackup --port 5000 config.ru")

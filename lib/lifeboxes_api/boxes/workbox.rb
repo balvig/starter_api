@@ -1,12 +1,23 @@
 module LifeboxesApi
   class Workbox
-    def to_json
-      {
-        widgets: widgets
-      }.to_json
+    require "lifeboxes_api/dashboard"
+
+    def initialize(width: 128, height: 250)
+      @width = width
+      @height = height
+    end
+
+    def render
+      dashboard.render
     end
 
     private
+
+      attr_reader :width, :height
+
+      def dashboard
+        Dashboard.new(width: width, height: height, widgets: widgets)
+      end
 
       def widgets
         [prs, reviews, meetings]

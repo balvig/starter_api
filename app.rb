@@ -9,9 +9,8 @@ require "sinatra"
 require "lifeboxes_api"
 
 get "/work" do
-  require "lifeboxes_api/ui"
   content_type "image/jpeg"
-  LifeboxesApi::Ui.new.render
+  LifeboxesApi::Workbox.new.render
 end
 
 get "/:box" do

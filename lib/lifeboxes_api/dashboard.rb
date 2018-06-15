@@ -1,12 +1,12 @@
 module LifeboxesApi
-  class Ui
+  class Dashboard
     require "rmagick"
     require "lifeboxes_api/widget"
 
-    def initialize
-      @width = 128
-      @height = 250
-      @canvas = Magick::Image.new(width, height)
+    def initialize(width:, height:, widgets:)
+      @width = width
+      @height = height
+      @widgets = widgets
     end
 
     def render
@@ -19,10 +19,10 @@ module LifeboxesApi
 
     private
 
-      attr_reader :width, :height, :canvas
+      attr_reader :width, :height, :widgets
 
-      def widgets
-        @_widgets ||= JSON.parse(Workbox.new.to_json)["widgets"]
+      def canvas
+        @_canvas ||= Magick::Image.new(width, height)
       end
 
       def widget_height

@@ -25,14 +25,14 @@ module LifeboxesApi
       def draw_title
         cursor.y = y
         cursor.font = :label
-        cursor.text data["title"]
+        cursor.text data[:title]
         cursor.linebreak(1.25)
       end
 
       def draw_list
-        data.fetch("items", {}).each do |item|
-          title = item["title"]
-          status = item["status"]
+        data.fetch(:items, {}).each do |item|
+          title = item[:title]
+          status = item[:status]
 
           cursor.font = :body
           cursor.linebreak(0.25)
@@ -45,7 +45,7 @@ module LifeboxesApi
       end
 
       def draw_count
-        count = data["count"]
+        count = data[:count]
         if count
           cursor.font = :count
           cursor.text(count.to_s, center: true)
@@ -53,7 +53,7 @@ module LifeboxesApi
       end
 
       def draw_header
-        header = data["header"]
+        header = data[:header]
         if header
           cursor.font = :header
           cursor.linebreak(0.25)
@@ -63,7 +63,7 @@ module LifeboxesApi
       end
 
       def draw_footer
-        footer = data["footer"]
+        footer = data[:footer]
         if footer
           cursor.font = :body
           cursor.text(footer, center: true)
