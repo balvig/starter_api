@@ -35,7 +35,7 @@ module LifeboxesApi
             text_x = width
           end
 
-          draw.text(text_x, text_y, text)
+          draw.text(text_x, text_y, text.to_s)
         end
       end
 
