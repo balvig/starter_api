@@ -36,7 +36,8 @@ module LifeboxesApi
       def recycle_widget
         {
           title: "Recycling",
-          header: garbage.current || "None"
+          header: garbage.current.to_s.capitalize || "None",
+          footer: "(#{garbage.date.strftime('%A')})"
         }
       end
 

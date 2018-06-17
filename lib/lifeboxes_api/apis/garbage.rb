@@ -5,6 +5,8 @@ module LifeboxesApi
     PICKUP_TIME = 9
     TYPES = %i(recyclable combustible pet_bottles non_combustible)
 
+    attr_reader :date
+
     def initialize(date = default_date)
       @date = date
     end
@@ -16,8 +18,6 @@ module LifeboxesApi
     end
 
     private
-
-      attr_reader :date
 
       def default_date
         if Time.now.hour >= PICKUP_TIME
