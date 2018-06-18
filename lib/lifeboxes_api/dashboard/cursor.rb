@@ -11,7 +11,7 @@ module LifeboxesApi
         body: ["Lato-Medium", 12],
         label: ["FreeMonoBold", 12],
         count: ["Lato-Semibold", 36],
-        header: ["Lato-Semibold", 24]
+        header: ["Lato-Semibold", 22]
       }
 
       def initialize(canvas)
