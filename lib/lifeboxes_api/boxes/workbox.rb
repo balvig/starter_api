@@ -34,12 +34,21 @@ module LifeboxesApi
       end
 
       def recycle_widget
-        params = {
+        {
           title: "Recycling",
-          header: garbage.current.to_s.capitalize || "None"
+          header: recycle_header,
+          footer: recycle_footer
         }
-        params[:footer] = "(tomorrow)" unless garbage.date == Date.today
-        params
+      end
+
+      def recycle_header
+        garbage.current.to_s.gsub("_", " ").capitalize || "None"
+      end
+
+      def recycle_footer
+        unless garbage.date == Date.today
+          "(tomorrow)"
+        end
       end
 
       def github_widget
