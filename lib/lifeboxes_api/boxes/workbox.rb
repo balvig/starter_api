@@ -42,7 +42,7 @@ module LifeboxesApi
       end
 
       def recycle_header
-        garbage.current.to_s.gsub("_", " ").capitalize || "None"
+        (garbage.current || "None").to_s.capitalize
       end
 
       def recycle_footer
@@ -57,8 +57,6 @@ module LifeboxesApi
           items: github.statuses.map(&:to_h)
         }
       end
-
-
 
       def prs
         {
