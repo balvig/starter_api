@@ -8,6 +8,10 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "sinatra"
 require "lifeboxes_api"
 
+post "/logs" do
+  log params
+end
+
 get "/work" do
   content_type "image/jpeg"
   LifeboxesApi::Workbox.new.render
@@ -32,4 +36,8 @@ private
 
   def box_name
     "LifeboxesApi::#{params[:box].capitalize}box"
+  end
+
+  def log(text)
+    puts text
   end
