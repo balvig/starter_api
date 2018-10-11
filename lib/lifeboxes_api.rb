@@ -7,5 +7,7 @@ require "lifeboxes_api/boxes/recyclebox"
 require "lifeboxes_api/boxes/statusbox"
 require "lifeboxes_api/boxes/workbox"
 
+require "lifeboxes_api/assistants/recycle_assistant"
+
 module LifeboxesApi
 end

@@ -7,9 +7,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require "sinatra"
 require "lifeboxes_api"
+require "json"
 
 post "/logs" do
   log params
+end
+
+post "/recycle_assistant" do
+  LifeboxesApi::RecycleAssistant.new(json).to_json
 end
 
 get "/work" do
@@ -40,4 +45,9 @@ private
 
   def log(text)
     puts text
+  end
+
+  def json
+    request.body.rewind
+    JSON.parse(request.body.read)
   end
