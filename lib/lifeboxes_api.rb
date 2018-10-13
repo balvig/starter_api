@@ -10,4 +10,5 @@ require "lifeboxes_api/boxes/workbox"
 require "lifeboxes_api/assistants/recycle_assistant"
 
 module LifeboxesApi
+  I18n.load_path += Dir["config/locales/*.yml"]
 end

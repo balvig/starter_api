@@ -1,0 +1,3 @@
+en:
+  recycle_assistant:
+    nothing: "There is no recycling for %{date}"

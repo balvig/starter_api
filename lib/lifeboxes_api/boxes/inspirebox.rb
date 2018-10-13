@@ -3,11 +3,11 @@ require "lifeboxes_api/linebreaker"
 
 module LifeboxesApi
   class Inspirebox
-    def to_json
+    def to_h
       {
         text: formatted_text,
         date: formatted_date
-      }.to_json
+      }
     end
 
     private

@@ -8,10 +8,10 @@ module LifeboxesApi
       @params = params
     end
 
-    def to_json
+    def to_h
       {
         fulfillmentText: response
-      }.to_json
+      }
     end
 
     private
@@ -22,7 +22,8 @@ module LifeboxesApi
         if garbage.current
           "The recycling for #{human_date} is #{garbage.current}."
         else
-          "There is no recycling for #{human_date}."
+          I18n.t "recycle_assistant.nothing", date: human_date
+          #"There is no recycling for #{human_date}."
         end
       end
 

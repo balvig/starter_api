@@ -14,7 +14,7 @@ post "/logs" do
 end
 
 post "/recycle_assistant" do
-  LifeboxesApi::RecycleAssistant.new(json).to_json
+  LifeboxesApi::RecycleAssistant.new(json).to_h.to_json
 end
 
 get "/work" do
@@ -26,7 +26,7 @@ get "/:box" do
   content_type :json
 
   begin
-    box.new.to_json
+    box.new.to_h.to_json
   rescue NameError
     status 404
     { error: "not_found"}.to_json

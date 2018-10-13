@@ -5,10 +5,10 @@ module LifeboxesApi
   class Recyclebox
     CHOICES = [:off, :nothing] + Garbage::TYPES
 
-    def to_json
+    def to_h
       {
         degrees: degrees
-      }.to_json
+      }
     end
 
     private

@@ -1,9 +1,9 @@
 module LifeboxesApi
   class Kitchenbox
-    def to_json
+    def to_h
       {
         recipe: recipe_markdown
-      }.to_json
+      }
     end
 
     private

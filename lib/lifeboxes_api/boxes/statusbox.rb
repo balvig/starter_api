@@ -6,10 +6,10 @@ module LifeboxesApi
   class Statusbox
     BORDER = "----------"
 
-    def to_json
+    def to_h
       {
         screens: screens
-      }.to_json
+      }
     end
 
     private

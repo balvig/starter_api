@@ -9,10 +9,10 @@ module LifeboxesApi
       fast: 2
     }
 
-    def to_json
+    def to_h
       {
         states: states,
-      }.to_json
+      }
     end
 
     private
