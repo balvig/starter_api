@@ -1,3 +1,9 @@
 en:
   recycle_assistant:
+    garbage: "%{date} is %{type}"
     nothing: "There is no recycling for %{date}"
+    types:
+      recyclable: cardboard boxes, cans, and glass bottles
+      combustible: combustible garbage
+      pet_bottles: plastic bottles
+      non_combustible: non-combustible garbage

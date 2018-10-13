@@ -20,10 +20,9 @@ module LifeboxesApi
 
       def response
         if garbage.current
-          "The recycling for #{human_date} is #{garbage.current}."
+          I18n.t "recycle_assistant.garbage", date: human_date, type: I18n.t("recycle_assistant.types.#{garbage.current}")
         else
           I18n.t "recycle_assistant.nothing", date: human_date
-          #"There is no recycling for #{human_date}."
         end
       end
 
