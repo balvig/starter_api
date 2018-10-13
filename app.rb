@@ -9,6 +9,13 @@ require "sinatra"
 require "lifeboxes_api"
 require "json"
 
+set :show_exceptions, false
+
+error 500 do
+  error = env["sinatra.error"]
+  { error: "#{error.class}: #{error.message}" }.to_json
+end
+
 post "/logs" do
   log params
 end

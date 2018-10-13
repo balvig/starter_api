@@ -2,21 +2,22 @@ require "test_helper"
 
 module LifeboxesApi
   class RecycleAssistantTest < Minitest::Test
-    def test_to_h
+    def test_to_h_en
       params = {
         "queryResult" => {
           "parameters" => {
             "date" => "2019-02-27"
-          }
+          },
+          "languageCode" => "en-us"
         }
       }
 
       result = RecycleAssistant.new(params).to_h
 
-      assert_equal "Tuesday is combustible garbage", result[:fulfillmentText]
+      assert_equal "Wednesday is non-combustible garbage", result[:fulfillmentText]
     end
 
-    def test_to_h
+    def test_to_h_japanese
       params = {
         "queryResult" => {
           "parameters" => {

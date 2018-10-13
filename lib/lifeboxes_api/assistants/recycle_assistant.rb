@@ -29,11 +29,11 @@ module LifeboxesApi
       end
 
       def current_locale
-        params["queryResult"]["languageCode"]
+        params["queryResult"]["languageCode"].split("-").first
       end
 
       def human_date
-        I18n.l date, format: :day, locale: current_locale# .strftime("%A")
+        I18n.l date, format: :day, locale: current_locale
       end
 
       def date
