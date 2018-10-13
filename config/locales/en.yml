@@ -1,4 +1,7 @@
 en:
+  date:
+    formats:
+      day: "%A"
   recycle_assistant:
     garbage: "%{date} is %{type}"
     nothing: "There is no recycling for %{date}"

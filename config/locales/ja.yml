@@ -1,0 +1,12 @@
+ja:
+  date:
+    formats:
+      day: "%A日"
+  recycle_assistant:
+    garbage: "%{date}は%{type}の日です"
+    nothing: "%{date}は出すゴミがありません"
+    types:
+      recyclable: 資源
+      combustible: 燃えるゴミ
+      pet_bottles: ペットボトル
+      non_combustible: 燃えないゴミ

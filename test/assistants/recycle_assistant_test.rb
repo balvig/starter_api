@@ -28,7 +28,7 @@ module LifeboxesApi
 
       result = RecycleAssistant.new(params).to_h
 
-      assert_equal "月曜日は燃えるゴミの日です", result[:fulfillmentText]
+      assert_equal "火曜日は燃えるゴミの日です", result[:fulfillmentText]
     end
   end
 end
