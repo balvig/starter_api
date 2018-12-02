@@ -20,8 +20,6 @@ module LifeboxesApi
       end
 
       def widgets
-        #[prs, reviews, meetings]
-
         [weather_widget, recycle_widget, github_widget]
       end
 
