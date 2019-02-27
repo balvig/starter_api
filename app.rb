@@ -7,6 +7,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require "sinatra"
 require "lifeboxes_api"
+require "lifeboxes_api/status_log"
 require "json"
 
 set :show_exceptions, false
@@ -14,10 +15,6 @@ set :show_exceptions, false
 error 500 do
   error = env["sinatra.error"]
   { error: "#{error.class}: #{error.message}" }.to_json
-end
-
-post "/logs" do
-  log params
 end
 
 post "/recycle_assistant" do
@@ -40,6 +37,12 @@ get "/:box" do
   end
 end
 
+after do
+  if log_value
+    LifeboxesApi::StatusLog.new.log(log_value)
+  end
+end
+
 private
 
   def box
@@ -50,8 +53,8 @@ private
     "LifeboxesApi::#{params[:box].capitalize}box"
   end
 
-  def log(text)
-    puts text
+  def log_value
+    params[:log_value]
   end
 
   def json
