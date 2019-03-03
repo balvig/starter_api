@@ -4,7 +4,7 @@ module LifeboxesApi
   class WeatherTest < Minitest::Test
     def test_rain_intensity
       weather = Weather.new
-      assert_equal :light_rain, weather.reports.first.rain_intensity
+      assert_equal :light_rain, weather.forecasts.first.rain_intensity
     end
 
     #def test_current_temperature
