@@ -5,11 +5,25 @@ module LifeboxesApi
     LOG_API_ENDPOINT = "http://api.thingspeak.com/update"
     LOG_API_KEY = "92YAC5EVJF5ES69W"
 
-    def log(value)
-      Net::HTTP.post_form(url, field1: value, api_key: LOG_API_KEY)
+    def self.log(*args)
+      new(*args).log
+    end
+
+    def initialize(values = {})
+      @values = values
+    end
+
+    def log
+      Net::HTTP.post_form(url, post_params)
     end
 
     private
+
+      attr_reader :values
+
+      def post_params
+        { api_key: LOG_API_KEY }.merge(values)
+      end
 
       def url
         URI.parse(LOG_API_ENDPOINT)
