@@ -1,8 +1,9 @@
+require "lifeboxes_api/boxes/lifebox"
 require "lifeboxes_api/apis/mahalojournal/api"
 require "lifeboxes_api/linebreaker"
 
 module LifeboxesApi
-  class Inspirebox
+  class Inspirebox < Lifebox
     def to_h
       {
         text: formatted_text,

@@ -2,7 +2,7 @@ require "lifeboxes_api/apis/garbage"
 require "lifeboxes_api/servo_degrees"
 
 module LifeboxesApi
-  class Recyclebox
+  class Recyclebox < Lifebox
     CHOICES = [:off, :nothing] + Garbage::TYPES
 
     def to_h

@@ -1,5 +1,5 @@
 module LifeboxesApi
-  class Workbox
+  class Workbox < Lifebox
     require "lifeboxes_api/dashboard"
 
     def initialize(width: 128, height: 250)

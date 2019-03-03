@@ -1,5 +1,5 @@
 module LifeboxesApi
-  class Kitchenbox
+  class Kitchenbox < Lifebox
     def to_h
       {
         recipe: recipe_markdown

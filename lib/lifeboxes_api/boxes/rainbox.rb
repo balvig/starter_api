@@ -2,7 +2,7 @@ require "lifeboxes_api/apis/current_rain"
 require "lifeboxes_api/apis/weather"
 
 module LifeboxesApi
-  class Rainbox
+  class Rainbox < Lifebox
     SKY_STATES = {
       off: 0,
       slow: 1,

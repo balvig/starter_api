@@ -3,7 +3,7 @@ require "lifeboxes_api/apis/garbage"
 require "lifeboxes_api/apis/weather"
 
 module LifeboxesApi
-  class Statusbox
+  class Statusbox < Lifebox
     BORDER = "----------"
 
     def to_h

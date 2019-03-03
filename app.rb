@@ -30,7 +30,7 @@ get "/:box" do
   content_type :json
 
   begin
-    box.new.to_h.to_json
+    box.new(params).to_h.to_json
   rescue NameError
     status 404
     { error: "not_found"}.to_json
