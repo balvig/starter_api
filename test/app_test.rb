@@ -1,33 +1,16 @@
 require "test_helper"
 require "rack/test"
 require "./app"
+require "awesome_print"
 
 module LifeboxesApi
   class AppTest < Minitest::Test
     include Rack::Test::Methods
 
-    def test_kitchen_box
-      get "/kitchen"
-
-      assert last_response.ok?
-    end
-
-    def test_rain_box
-      get "/rain"
-
-      assert last_response.ok?
-    end
-
-    def test_recycle_box
-      get "/recycle"
-
-      assert last_response.ok?
-    end
-
-    def test_status_box
-      get "/status"
-
-      assert last_response.ok?
+    def test_boxes
+      %w(kitchen rain recycle status).each do |box|
+        test_box box
+      end
     end
 
     def test_work_box
@@ -36,9 +19,18 @@ module LifeboxesApi
       assert last_response.ok?
     end
 
-    def app
-      Sinatra::Application
-    end
+    private
 
+      def app
+        Sinatra::Application
+      end
+
+      def test_box(box)
+        puts "<< Testing #{box} >>"
+        get box
+
+        assert last_response.ok?
+        ap JSON.parse(last_response.body)
+      end
   end
 end

@@ -18,6 +18,7 @@ group :development do
 end
 
 group :test do
+  gem "awesome_print"
   gem "minitest"
   gem "rack-test"
 end

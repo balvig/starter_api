@@ -4,6 +4,10 @@ module LifeboxesApi
       @params = params
     end
 
+    def process
+      # noop - override to do some logging etc
+    end
+
     private
 
       attr_reader :params

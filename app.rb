@@ -30,10 +30,12 @@ get "/:box" do
   content_type :json
 
   begin
-    box.new(params).to_h.to_json
+    box = box_class.new(params)
+    box.process
+    box.to_h.to_json
   rescue NameError
     status 404
-    { error: "not_found"}.to_json
+    { error: "not_found" }.to_json
   end
 end
 
@@ -45,7 +47,7 @@ end
 
 private
 
-  def box
+  def box_class
     Object.const_get(box_name)
   end
 
