@@ -4,7 +4,9 @@ module LifeboxesApi
   class Garbage
     TYPES = %i(recyclable combustible pet_bottles non_combustible)
 
-    def initialize(date)
+    attr_reader :date
+
+    def initialize(date = Date.today)
       @date = date
     end
 
@@ -15,8 +17,6 @@ module LifeboxesApi
     end
 
     private
-
-      attr_reader :date
 
       def garbage_day?(type)
         rule = send(type)

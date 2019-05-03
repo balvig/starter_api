@@ -5,6 +5,7 @@ require "lifeboxes_api/status_log"
 
 module LifeboxesApi
   class Recyclebox < Lifebox
+    DEFAULT_LOG_API_KEY = "92YAC5EVJF5ES69W"
     PICKUP_TIME = 9
     CHOICES = [:off, :nothing] + Garbage::TYPES
 
@@ -23,6 +24,7 @@ module LifeboxesApi
 
       def write_log
         StatusLog.log(
+          api_key: log_api_key,
           field1: battery_level,
           field2: degrees
         )
@@ -30,6 +32,14 @@ module LifeboxesApi
 
       def battery_level
         params[:log_value]
+      end
+
+      def log_api_key
+        custom_log_key || DEFAULT_LOG_API_KEY
+      end
+
+      def custom_log_key
+        params[:log_key]
       end
 
       def degrees
@@ -57,7 +67,7 @@ module LifeboxesApi
       end
 
       def date
-        if Time.now.hour >= current_hour
+        if current_hour >= PICKUP_TIME
           Date.today + 1
         else
           Date.today

@@ -3,13 +3,13 @@ require "net/http"
 module LifeboxesApi
   class StatusLog
     LOG_API_ENDPOINT = "http://api.thingspeak.com/update"
-    LOG_API_KEY = "92YAC5EVJF5ES69W"
 
     def self.log(*args)
       new(*args).log
     end
 
-    def initialize(values = {})
+    def initialize(api_key:, **values)
+      @api_key = api_key
       @values = values
     end
 
@@ -19,10 +19,10 @@ module LifeboxesApi
 
     private
 
-      attr_reader :values
+      attr_reader :api_key, :values
 
       def post_params
-        { api_key: LOG_API_KEY }.merge(values)
+        { api_key: api_key }.merge(values)
       end
 
       def url
