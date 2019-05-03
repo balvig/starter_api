@@ -1,9 +1,11 @@
 require "lifeboxes_api/apis/garbage"
+require "lifeboxes_api/cycles"
 require "lifeboxes_api/servo_degrees"
 require "lifeboxes_api/status_log"
 
 module LifeboxesApi
   class Recyclebox < Lifebox
+    PICKUP_TIME = 9
     CHOICES = [:off, :nothing] + Garbage::TYPES
 
     def process
@@ -12,7 +14,8 @@ module LifeboxesApi
 
     def to_h
       {
-        degrees: degrees
+        degrees: degrees,
+        cycles: remaining_cycles
       }
     end
 
@@ -42,7 +45,23 @@ module LifeboxesApi
       end
 
       def garbage
-        @_garbage ||= Garbage.new
+        @_garbage ||= Garbage.new(date)
+      end
+
+      def remaining_cycles
+        Cycles.until(now: current_hour, target: PICKUP_TIME)
+      end
+
+      def current_hour
+        Time.now.hour
+      end
+
+      def date
+        if Time.now.hour >= current_hour
+          Date.today + 1
+        else
+          Date.today
+        end
       end
   end
 end

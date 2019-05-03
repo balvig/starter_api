@@ -2,12 +2,9 @@ require "ice_cube"
 
 module LifeboxesApi
   class Garbage
-    PICKUP_TIME = 9
     TYPES = %i(recyclable combustible pet_bottles non_combustible)
 
-    attr_reader :date
-
-    def initialize(date = default_date)
+    def initialize(date)
       @date = date
     end
 
@@ -19,13 +16,7 @@ module LifeboxesApi
 
     private
 
-      def default_date
-        if Time.now.hour >= PICKUP_TIME
-          Date.today + 1
-        else
-          Date.today
-        end
-      end
+      attr_reader :date
 
       def garbage_day?(type)
         rule = send(type)
@@ -62,7 +53,7 @@ module LifeboxesApi
       end
 
       def build_schedule
-        schedule = IceCube::Schedule.new
+        schedule = IceCube::Schedule.new(date)
         schedule.add_recurrence_rule yield(IceCube::Rule)
         schedule.add_exception_rule(new_year_break)
         schedule
