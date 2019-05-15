@@ -31,7 +31,7 @@ module LifeboxesApi
       end
 
       def battery_level
-        params[:log_value]
+        params[:battery_level]
       end
 
       def log_api_key
