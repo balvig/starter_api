@@ -8,6 +8,7 @@ module LifeboxesApi
     DEFAULT_LOG_API_KEY = "92YAC5EVJF5ES69W"
     PICKUP_TIME = 9
     CHOICES = [:off, :nothing] + Garbage::TYPES
+    LOW_BATTERY_LEVEL = 750
 
     def process
       write_log
@@ -31,7 +32,7 @@ module LifeboxesApi
       end
 
       def battery_level
-        params[:battery_level]
+        params[:battery_level]&.to_i
       end
 
       def log_api_key
@@ -51,7 +52,15 @@ module LifeboxesApi
       end
 
       def current
-        garbage.current || :nothing
+        if low_battery?
+          :off
+        else
+          garbage.current || :nothing
+        end
+      end
+
+      def low_battery?
+        battery_level && battery_level <= LOW_BATTERY_LEVEL
       end
 
       def garbage
