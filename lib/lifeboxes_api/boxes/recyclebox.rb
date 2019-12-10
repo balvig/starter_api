@@ -27,7 +27,8 @@ module LifeboxesApi
         StatusLog.log(
           api_key: log_api_key,
           field1: battery_level,
-          field2: degrees
+          field2: degrees,
+          field3: remaining_cycles
         )
       end
 
