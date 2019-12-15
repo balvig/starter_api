@@ -8,7 +8,7 @@ module LifeboxesApi
     DEFAULT_LOG_API_KEY = "92YAC5EVJF5ES69W"
     PICKUP_TIME = 9
     CHOICES = [:off, :nothing] + Garbage::TYPES
-    LOW_BATTERY_LEVEL = 750
+    LOW_BATTERY_LEVEL = 780
 
     def process
       write_log
